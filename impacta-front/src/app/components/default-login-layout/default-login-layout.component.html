@@ -1,0 +1,23 @@
+<main>
+  <section class="form-section">
+    <img src="/assets/images/impacta-logo.png" alt="Logo Impacta" class="sub-logo">
+    <h2>{{ title !}}</h2>
+    <ng-content></ng-content>
+    <div class="btn-case">
+      <button class="btn-login" type="submit" (click)="submit()"
+      >{{ primaryBtnTxt }}</button>
+      <div class="divider">
+        <div></div>
+        <span>ou</span>
+        <div></div>
+      </div>
+      <button class="btn-sign" type="button" (click)="navigate()"
+      >{{ secondaryBtnTxt }}</button>
+    </div>
+  </section>
+  <section class="main-section">
+    <h1></h1>
+    <img src="/assets/images/logo.png" alt="main logo" class="main-logo">
+    <h1>Impacte o mundo com suas ações</h1>
+  </section>
+</main>
