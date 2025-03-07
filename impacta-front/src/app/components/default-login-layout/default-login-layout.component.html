@@ -4,7 +4,11 @@
     <h2>{{ title !}}</h2>
     <ng-content></ng-content>
     <div class="btn-case">
-      <button class="btn-login" type="submit" (click)="submit()"
+      <button
+        class="btn-login"
+        type="submit"
+        (click)="submit()"
+        [disabled] = "disablePrimaryBtn"
       >{{ primaryBtnTxt }}</button>
       <div class="divider">
         <div></div>
