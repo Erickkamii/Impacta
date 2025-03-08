@@ -1,0 +1,131 @@
+@import "../../../styles/variables.scss";
+
+main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+section{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.main-section{
+   gap: 8px;
+   flex-grow: 0.1;
+   background-color: $decoration-colour;
+}
+ .form-section{
+   flex-grow: 1;
+   background-color: $form-colour;
+   padding: 0 35px;
+}
+ .sub-logo{
+  width: 100px;
+  margin-bottom: 10px;
+}
+h2{
+   font-size: 20px;
+   font-weight: bold;
+   margin-bottom: 25px;
+}
+.btn-case{
+  display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+
+  .divider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: $button-blue;
+    font-weight: 400;
+    gap: 20px;
+    text-transform: uppercase;
+    width: 100%;
+
+    div{
+        flex-grow: 0.3;
+        height: 1px;
+        background-color: $button-blue;
+    }
+  }
+
+  button{
+    width: 80%;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500px;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+
+    &:disabled{
+      opacity: 0.8;
+    }
+    &.btn-login{
+      background-color: $button-blue;
+      color: $form-colour;
+      box-shadow: 0px 8px 12px rgba(0, 102, 204, 0.2);
+    }
+
+    &.btn-sign{
+      border: 1px solid $side-colour;
+      color: $button-blue;
+    }
+
+    &.btn-change{
+      background-color: $button-blue;
+      color: $form-colour;
+      box-shadow: 0px 8px 12px rgba(0, 102, 204, 0.2);
+    }
+}
+
+}
+app-primary-input.input-wrapper
+{
+  font-size: 16px;
+  color: #000000;
+  text-align: start;
+
+
+  .input-content{
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+
+      .icon{
+        padding: 12px;
+        background-color: #004C99;
+        border-radius: 0 8px 8px 0;
+        border: 2px solid #000000;
+
+      }
+
+      input {
+        background-color: #FFFFFF;
+        border: 2px solid #000000;
+        padding: 12px 0 12px 20px;
+        border-radius: 8px 0 0 8px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
+        width: 100%;
+      }
+
+      input:focus {
+        border-color: #004C99;
+        box-shadow: 0 0 8px rgba(0, 102, 204, 0.4);
+      }
+}
+}
+
+

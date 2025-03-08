@@ -1,0 +1,61 @@
+<app-default-signup-layout
+  title="Faça a diferença: impacte mais vidas hoje"
+  changeBtnTxt="Sou ONG"
+  primaryBtnTxt="Cadastrar"
+  secondaryBtnTxt="Já sou cadastrado"
+  (submit)="submit()"
+  (navigate)="navigate()"
+  [disablePrimaryBtn]="!signupForm.valid"
+>
+<div class="form-container">
+  <form [formGroup]="signupForm" class="signup">
+      <app-primary-input
+      formControlName="name"
+      inputName="name"
+      type="text"
+      label="Nome"
+      placeholder="Convidado"
+      >
+        <img src="/assets/svg/email.svg" alt="email icon">
+      </app-primary-input>
+      <app-primary-input
+      formControlName="email"
+      inputName="email"
+      type="email"
+      label="E-mail"
+      placeholder="convidado@impacta.com"
+      >
+        <img src="/assets/svg/email.svg" alt="email icon">
+      </app-primary-input>
+      <app-primary-input
+      formControlName="cpf"
+      inputName="document"
+      type="text"
+      label="Insira seu CPF"
+      placeholder="123.456.789-10"
+      >
+      <img src="/assets/svg/password.svg" alt="password icon">
+      </app-primary-input>
+
+      <app-primary-input
+      formControlName="password"
+      inputName="password"
+      type="password"
+      label="Senha"
+      placeholder=""
+      >
+      <img src="/assets/svg/password.svg" alt="password icon">
+      </app-primary-input>
+      <app-primary-input
+      formControlName="passwordConfirmation"
+      inputName="passwordConfirmation"
+      type="password"
+      label="Confirme sua Senha"
+      placeholder=""
+      >
+      <img src="/assets/svg/password.svg" alt="password icon">
+      </app-primary-input>
+
+  </form>
+</div>
+</app-default-signup-layout>
