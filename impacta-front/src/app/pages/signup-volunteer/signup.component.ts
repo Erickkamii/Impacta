@@ -53,4 +53,9 @@ export class SignupComponent {
   navigate(){
     this.router.navigate(['login'])
   }
+
+  navigateSign(){
+    console.log("SOCORRO")
+    this.router.navigate(['ongsignup'])
+  }
 }

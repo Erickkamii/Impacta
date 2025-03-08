@@ -14,6 +14,7 @@ export class DefaultSignupLayoutComponent {
   @Input() disablePrimaryBtn: boolean = true;
   @Output("submit") onSubmit = new EventEmitter();
   @Output("navigate") onNavigate = new EventEmitter();
+  @Output("navigateSign") onNavigateSign = new EventEmitter();
 
   submit(){
     this.onSubmit.emit();
@@ -21,5 +22,9 @@ export class DefaultSignupLayoutComponent {
 
   navigate(){
     this.onNavigate.emit();
+  }
+
+  navigateSign(){
+    this.onNavigateSign.emit();
   }
 }
