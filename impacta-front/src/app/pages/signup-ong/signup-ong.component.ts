@@ -12,7 +12,7 @@ interface SignupForm {
   email: FormControl,
   password: FormControl,
   passwordConfirmation: FormControl,
-  cpf: FormControl
+  document: FormControl
 }
 @Component({
   selector: 'app-login',
@@ -24,10 +24,10 @@ interface SignupForm {
   providers:[
     LoginService
   ],
-  templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+  templateUrl: './signup-ong.component.html',
+  styleUrl: './signup-ong.component.scss'
 })
-export class SignupComponent {
+export class SignupOngComponent {
   signupForm!: FormGroup<SignupForm>;
   constructor(
     private router: Router,
@@ -39,14 +39,14 @@ export class SignupComponent {
       email: new FormControl('',[Validators.required, Validators.email]),
       password: new FormControl('',[Validators.required, Validators.minLength(8)]),
       passwordConfirmation: new FormControl('',[Validators.required, Validators.minLength(8)]),
-      cpf: new FormControl('',[Validators.required, Validators.minLength(8)])
+      document: new FormControl('',[Validators.required, Validators.minLength(8)])
     })
   }
 
   submit(){
     this.loginService.login(this.signupForm.value.email,this.signupForm.value.password).subscribe({
       next: () => this.toastService.success("Cadastro realizado com sucesso"),
-      error: () => this.toastService.error("Falha no Login, tente novamente mais tarde!")
+      error: () => this.toastService.error("Falha no Cadastro, tente novamente mais tarde!")
     })
   }
 
@@ -55,7 +55,7 @@ export class SignupComponent {
   }
 
   navigateSign(){
-    console.log("SOCORRO")
-    this.router.navigate(['ongsignup'])
+    console.log("hey")
+    this.router.navigate(['sign-up'])
   }
 }
