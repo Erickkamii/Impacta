@@ -28,7 +28,35 @@ public class DonationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Donation>> getAllDonations() {
-        return ResponseEntity.ok(donationRepository.findAll());
+    public ResponseEntity<List<DonationResponseDTO>> getAllDonations() {
+        List<Donation> donations = donationRepository.findAll();
+
+        List<DonationResponseDTO> response = donations.stream()
+                .map(donation -> new DonationResponseDTO(
+                        donation.getId(),
+                        donation.getValue(),
+                        donation.getDonationDate(),
+                        donation.getVolunteer().getUser().getName(),
+                        donation.getOng().getUser().getName()
+                ))
+                .toList();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/by-volunteer")
+    public ResponseEntity<List<DonationResponseDTO>> getAllDonationsByVolunteerName(@RequestParam String volunteerName) {
+        List<Donation> donations = donationRepository.findByVolunteerUserNameIgnoreCase(volunteerName);
+
+        List<DonationResponseDTO> response = donations.stream()
+                .map(d -> new DonationResponseDTO(
+                        d.getId(),
+                        d.getValue(),
+                        d.getDonationDate(),
+                        d.getVolunteer().getUser().getName(),
+                        d.getOng().getUser().getName()
+                ))
+                .toList();
+        return ResponseEntity.ok(response);
     }
 }

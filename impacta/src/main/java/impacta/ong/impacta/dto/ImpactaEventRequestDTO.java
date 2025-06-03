@@ -1,13 +1,14 @@
 package impacta.ong.impacta.dto;
 
-import java.util.UUID;
+
 
 public record ImpactaEventRequestDTO(
-        UUID volunteerId,
-        UUID ongId,
+        String volunteerId,
+        String ongId,
         String city,
         String state,
         String description,
-        String period
+        String period,
+        String status
 ) {
 }
