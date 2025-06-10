@@ -1,10 +1,13 @@
 package impacta.ong.impacta.controllers;
 
+import impacta.ong.impacta.dto.AssignSkillRequestDTO;
 import impacta.ong.impacta.dto.SkillRequestDTO;
 import impacta.ong.impacta.dto.SkillResponseDTO;
 import impacta.ong.impacta.repositories.SkillRepository;
 import impacta.ong.impacta.services.SkillService;
+import impacta.ong.impacta.services.VolunteerSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,8 @@ public class SkillController {
     private SkillService skillService;
     @Autowired
     private SkillRepository skillRepository;
+    @Autowired
+    private VolunteerSkillService volunteerSkillService;
 
     @PostMapping
     public ResponseEntity<SkillResponseDTO> createSkill(@RequestBody SkillRequestDTO skillRequest) {
@@ -43,6 +48,17 @@ public class SkillController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSkill(@PathVariable String id) {
         skillService.deleteSkill(id);
-        return ResponseEntity.noContent().build(); // 204 status code
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/assign")
+    public ResponseEntity<String> assignSkillToVolunteer(@RequestBody AssignSkillRequestDTO dto) {
+        volunteerSkillService.createSkillAndAssign(
+                dto.skillName(),
+                dto.volunteerId(),
+                dto.description(),
+                dto.level()
+        );
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

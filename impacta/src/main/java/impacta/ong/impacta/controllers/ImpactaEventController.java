@@ -6,7 +6,6 @@ import impacta.ong.impacta.dto.ImpactaEventResponseDTO;
 import impacta.ong.impacta.repositories.ImpactaEventRepository;
 import impacta.ong.impacta.services.ImpactaEventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,11 +31,11 @@ public class ImpactaEventController {
 
         List<ImpactaEventResponseDTO> response = events.stream()
                 .map(event -> new ImpactaEventResponseDTO(
-                        event.getId(),//id
-                        event.getDate(),//date
-                        event.getVolunteer().getUser().getName(),//volunteer name
-                        event.getOng().getUser().getName(),//ong name
-                        event.getCity(),//city
+                        event.getId(),
+                        event.getDate(),
+                        event.getVolunteer().getUser().getName(),
+                        event.getOng().getUser().getName(),
+                        event.getCity(),
                         event.getState(),
                         event.getDescription(),
                         event.getPeriod(),
