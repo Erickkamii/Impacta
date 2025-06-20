@@ -30,7 +30,7 @@ public class LoginController {
         var user = (User) auth.getPrincipal();
         var token = tokenService.generateToken(user);
 
-        return ResponseEntity.ok(new ResponseDTO(user.getUsername(), token));
+        return ResponseEntity.ok(new ResponseDTO(user.getUsername(), token, user.getRole()));
     }
 
 

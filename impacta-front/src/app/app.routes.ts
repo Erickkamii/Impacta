@@ -1,26 +1,54 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup-volunteer/signup-volunteer.component';
-import { SignupOngComponent } from './pages/signup-ong/signup-ong.component';
-import { StartComponent } from './pages/start/start.component';
+// Update the path below to the correct location of auth.guard.ts, for example:
 import { AuthGuard } from './services/auth-guard.service';
 
+// Importar seus componentes
+import { LoginComponent } from './pages/login/login.component';
+import { SignupVolunteerComponent } from './pages/signup-volunteer/signup-volunteer.component';
+import { SignupOngComponent } from './pages/signup-ong/signup-ong.component';
+import { DashboardVolunteerComponent } from './pages/dashboard-volunteer/dashboard-volunteer.component';
+import { DashboardOngComponent } from './pages/dashboard-ong/dashboard-ong.component';
+
 export const routes: Routes = [
+  // Rotas públicas (não precisam de autenticação)
   {
-    path: "login",
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: "sign-up",
-    component: SignupComponent
+    path: 'signup-volunteer',
+    component: SignupVolunteerComponent
   },
   {
-    path: "sign-up-ong",
+    path: 'signup-ong',
     component: SignupOngComponent
   },
+
+  // Rotas protegidas (precisam de autenticação)
   {
-    path: "start",
-    component: StartComponent,
-    canActivate: [AuthGuard]
+    path: 'dashboard-volunteer',
+    component: DashboardVolunteerComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'VOLUNTEER' } // Somente voluntários podem acessar
+  },
+  {
+    path: 'dashboard-ong',
+    component: DashboardOngComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'ONG' } // Somente ONGs podem acessar
+  },
+
+  // Rota padrão
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+
+  // Rota para páginas não encontradas
+  {
+    path: '**',
+    redirectTo: '/login'
   }
 ];
+

@@ -40,7 +40,7 @@ public class RegisterController {
         if (body.name() == null || body.name().isBlank() ||
                 body.document() == null || body.document().isBlank() ||
                 body.role() == null) {
-            return ResponseEntity.badRequest().body(new ResponseDTO("Preencha todos os campos obrigatórios", null));
+            return ResponseEntity.badRequest().body(new ResponseDTO("Preencha todos os campos obrigatórios", null, null));
         }
 
         if (userOptional.isPresent()) {
@@ -66,6 +66,6 @@ public class RegisterController {
             ongRepository.saveAndFlush(ong);
         }
         String token = tokenService.generateToken(newUser);
-        return ResponseEntity.ok(new ResponseDTO(newUser.getUsername(), token));
+        return ResponseEntity.ok(new ResponseDTO(newUser.getUsername(), token, newUser.getRole()));
     }
 }
