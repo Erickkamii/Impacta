@@ -96,6 +96,3 @@ Impacta é uma plataforma para conectar ONGs e voluntários, facilitando o cadas
 
 ---
 
-## Observações
-
-Este projeto é de uso privado e não está sendo distribuído como open-
