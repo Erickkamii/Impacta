@@ -1,0 +1,34 @@
+<header class="dashboard-header">
+  <div class="header-content">
+    <div class="logo-section">
+      <span class="logo">🤝 Impacta</span>
+    </div>
+    <div class="header-center">
+      <input type="text" class="search-box" [placeholder]="searchPlaceholder">
+    </div>
+    <div class="user-section">
+      <div class="user-avatar">{{ userIcon }}</div>
+      <span>{{ userLabel }}</span>
+    </div>
+  </div>
+</header>
+
+<main class="dashboard-main-content">
+  <div class="welcome-card">
+    <h1 class="welcome-title">
+      <ng-content select="[welcome-title]"></ng-content>
+    </h1>
+    <p class="welcome-subtitle">
+      <ng-content select="[welcome-subtitle]"></ng-content>
+    </p>
+  </div>
+
+  <div class="dashboard-layout">
+    <div class="main-column">
+      <ng-content select="[main-column]"></ng-content>
+    </div>
+    <div class="sidebar">
+      <ng-content select="[sidebar]"></ng-content>
+    </div>
+  </div>
+</main>

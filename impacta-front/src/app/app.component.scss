@@ -1,0 +1,25 @@
+:root {
+  --primary-blue: #004C99;
+  --primary-blue-hover: #003366;
+  --background-light: #f0f2f5;
+  --card-background: #fff;
+  --text-primary: #1c1e21;
+  --text-secondary: #65676b;
+  --border-blue: #004C99;
+  --border-light: #e4e6ea;
+  --shadow-light: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-medium: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+* {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background-light);
+  color: var(--text-primary);
+  min-height: 100vh;
+}

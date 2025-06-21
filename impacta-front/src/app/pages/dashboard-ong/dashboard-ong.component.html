@@ -1,0 +1,139 @@
+<app-dashboard-layout
+  userLabel="ONG"
+  userIcon="🏢"
+  searchPlaceholder="Buscar voluntários, eventos...">
+
+  <span welcome-title>Bem-vinda, ONG!</span>
+  <span welcome-subtitle>Conecte-se com voluntários e faça a diferença na comunidade</span>
+
+  <ng-container main-column>
+    <!-- Criar Evento -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Criar Novo Evento</h2>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="createEvent()">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Cidade</label>
+              <input type="text" class="form-input" [(ngModel)]="eventData.city" name="city" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estado</label>
+              <input type="text" class="form-input" [(ngModel)]="eventData.state" name="state" maxlength="2" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-textarea" [(ngModel)]="eventData.description" name="description" required></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Período</label>
+              <select class="form-select" [(ngModel)]="eventData.period" name="period">
+                <option value="">Selecione</option>
+                <option value="manha">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+                <option value="integral">Integral</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-select" [(ngModel)]="eventData.status" name="status">
+                <option value="">Selecione</option>
+                <option value="ativo">Ativo</option>
+                <option value="pendente">Pendente</option>
+                <option value="concluido">Concluído</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">ID Voluntário</label>
+              <input type="text" class="form-input" [(ngModel)]="eventData.volunteerId" name="volunteerId">
+            </div>
+            <div class="form-group">
+              <label class="form-label">ID da ONG</label>
+              <input type="text" class="form-input" [(ngModel)]="eventData.ongId" name="ongId">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="loading">
+            Criar Evento
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Eventos -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Meus Eventos</h2>
+      </div>
+      <div class="card-body">
+        <div *ngIf="events.length === 0" class="empty-state">
+          <div class="empty-icon">📅</div>
+          <div class="empty-title">Nenhum evento</div>
+          <div class="empty-description">Crie seu primeiro evento!</div>
+        </div>
+
+        <div *ngFor="let event of events" class="event-item">
+          <div class="event-info">
+            <h4>{{ event.description }}</h4>
+            <div class="event-meta">
+              <span>{{ event.city }}/{{ event.state }}</span>
+              <span>{{ event.period }}</span>
+              <span>{{ event.status }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container sidebar>
+    <!-- Estatísticas -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Estatísticas</h3>
+      </div>
+      <div class="card-body">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-info">
+              <span class="stat-number">{{ events.length }}</span>
+              <span class="stat-label">Eventos</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">👥</div>
+            <div class="stat-info">
+              <span class="stat-number">47</span>
+              <span class="stat-label">Voluntários</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">💰</div>
+            <div class="stat-info">
+              <span class="stat-number">R$ {{ totalDoacoes }}</span>
+              <span class="stat-label">Doações</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-info">
+              <span class="stat-number">4.8</span>
+              <span class="stat-label">Avaliação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-dashboard-layout>

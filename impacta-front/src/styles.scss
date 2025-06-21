@@ -10,3 +10,43 @@
 html, body{
   height: 100%;
 }
+
+:root {
+  --primary-blue: #004C99;
+  --primary-blue-hover: #003366;
+  --background: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-primary: #1c1e21;
+  --text-secondary: #65676b;
+  --border: #dddfe2;
+  --hover-bg: #f2f3f4;
+  --shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-hover: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.form-input,
+.form-select,
+.form-textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  border: 2px solid var(--primary-blue) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+  background: #fff !important;
+  color: var(--text-primary) !important;
+  outline: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+  margin-bottom: 2px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-blue-hover) !important;
+  box-shadow: 0 0 0 2px #cce0ff !important;
+}

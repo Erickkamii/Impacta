@@ -1,0 +1,141 @@
+<app-dashboard-layout
+  userLabel="Voluntário"
+  userIcon="👤"
+  searchPlaceholder="Buscar eventos, ONGs...">
+
+  <span welcome-title>Olá, Voluntário!</span>
+  <span welcome-subtitle>Encontre eventos incríveis e faça a diferença</span>
+
+  <ng-container main-column>
+    <!-- Eventos Disponíveis -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Eventos Disponíveis</h2>
+      </div>
+      <div class="card-body">
+        <div *ngIf="events.length === 0" class="empty-state">
+          <div class="empty-state-icon">📅</div>
+          <h4>Nenhum evento disponível</h4>
+          <p>Novos eventos aparecerão aqui!</p>
+        </div>
+
+        <div *ngFor="let event of events" class="event-item">
+          <div class="event-info">
+            <h4>{{ event.description }}</h4>
+            <div class="event-meta">
+              <span>📍 {{ event.city }}/{{ event.state }}</span>
+              <span *ngIf="event.period">⏰ {{ event.period }}</span>
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="inscrever(event.id)">
+            Participar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cadastrar Habilidade -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Cadastrar Habilidade</h2>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="cadastrarSkill()">
+          <div class="form-group">
+            <label class="form-label">Nome da Habilidade</label>
+            <input type="text" class="form-input" [(ngModel)]="skill.skillName" name="skillName" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-input" [(ngModel)]="skill.description" name="description" rows="3" required></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nível</label>
+              <select class="form-input" [(ngModel)]="skill.level" name="level">
+                <option value="">Selecione</option>
+                <option value="iniciante">Iniciante</option>
+                <option value="intermediario">Intermediário</option>
+                <option value="avancado">Avançado</option>
+                <option value="especialista">Especialista</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Seu ID</label>
+              <input type="text" class="form-input" [(ngModel)]="skill.volunteerId" name="volunteerId">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="loading.skill">
+            Cadastrar Habilidade
+          </button>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container sidebar>
+    <!-- ONGs Parceiras -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">ONGs Parceiras</h3>
+      </div>
+      <div class="card-body">
+        <div *ngIf="ongs.length === 0" class="empty-state">
+          <div class="empty-state-icon">🏢</div>
+          <h4>Nenhuma ONG</h4>
+          <p>ONGs parceiras aparecerão aqui!</p>
+        </div>
+
+        <div *ngFor="let ong of ongs" class="ong-item">
+          <div class="ong-avatar">{{ ong.nome.charAt(0) }}</div>
+          <div class="ong-info">
+            <div class="ong-name">{{ ong.nome }}</div>
+            <div class="ong-desc">{{ ong.description || 'Organização parceira' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seu Impacto -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Seu Impacto</h3>
+      </div>
+      <div class="card-body">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-info">
+              <span class="stat-number">0</span>
+              <span class="stat-label">Eventos</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">💰</div>
+            <div class="stat-info">
+              <span class="stat-number">R$ 0</span>
+              <span class="stat-label">Doações</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">🛠️</div>
+            <div class="stat-info">
+              <span class="stat-number">0</span>
+              <span class="stat-label">Habilidades</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-info">
+              <span class="stat-number">-</span>
+              <span class="stat-label">Avaliação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-dashboard-layout>
