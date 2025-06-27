@@ -1,15 +1,24 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { routes } from './app.routes';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideToastr } from 'ngx-toastr';
-import { provideAnimations } from '@angular/platform-browser/animations'
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
-              provideRouter(routes),
-              provideAnimations(),
-              provideToastr(),
-              provideHttpClient(withFetch())]
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([
+      (req, next) => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+          req = req.clone({
+            setHeaders: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+        }
+        return next(req);
+      }
+    ]))
+  ]
 };

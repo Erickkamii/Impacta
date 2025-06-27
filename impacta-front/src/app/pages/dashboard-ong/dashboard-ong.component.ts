@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { DashboardLayoutComponent } from "../../components/dashboard-layout/dashboard-layout.component";
 
 interface EventData {
-ongId: any;
-volunteerId: any;
+  ongId: any;
+  volunteerId: any;
   city: string;
   state: string;
   description: string;
@@ -62,7 +62,7 @@ export class DashboardOngComponent {
   }
 
   loadDoacoes() {
-    this.http.get<{ total: number }>(`${this.API_URL}/donations/total`).subscribe({
+    this.http.get<{ total: number }>(`${this.API_URL}/donations`).subscribe({
       next: (res) => this.totalDoacoes = res.total,
       error: () => this.totalDoacoes = 0
     });
