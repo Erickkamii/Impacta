@@ -14,8 +14,8 @@ public class VolunteerSkillViewService {
         this.repository = repository;
     }
 
-    public List<VolunteerSkillView> findByVolunteerName(String name) {
-        return repository.findByVolunteerName(name);
+    public List<VolunteerSkillView> findByVolunteerId(String volunteerId) {
+        return repository.findByVolunteerId(volunteerId);
     }
 
     public List<VolunteerSkillView> findAll() {

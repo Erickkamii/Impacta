@@ -90,9 +90,9 @@
         </div>
 
         <div *ngFor="let ong of ongs" class="ong-item">
-          <div class="ong-avatar">{{ ong.nome.charAt(0) }}</div>
+          <div class="ong-avatar">{{ ong.nome?.charAt(0) || '?' }}</div>
           <div class="ong-info">
-            <div class="ong-name">{{ ong.nome }}</div>
+            <div class="ong-name">{{ ong.nome || 'Nome não informado' }}</div>
             <div class="ong-desc">{{ ong.description || 'Organização parceira' }}</div>
           </div>
         </div>
@@ -123,7 +123,7 @@
           <div class="stat-item">
             <div class="stat-icon">🛠️</div>
             <div class="stat-info">
-              <span class="stat-number">0</span>
+              <span class="stat-number">{{ skillCount }}</span>
               <span class="stat-label">Habilidades</span>
             </div>
           </div>

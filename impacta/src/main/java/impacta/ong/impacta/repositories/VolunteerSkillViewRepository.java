@@ -8,4 +8,5 @@ import java.util.List;
 public interface VolunteerSkillViewRepository extends JpaRepository<VolunteerSkillView, String> {
     List<VolunteerSkillView> findByVolunteerName(String volunteerName);
 
+    List<VolunteerSkillView> findByVolunteerId(String volunteerId);
 }
