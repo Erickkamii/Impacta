@@ -79,7 +79,7 @@ Impacta é uma plataforma para conectar ONGs e voluntários, facilitando o cadas
    cd impacta
    ./mvnw spring-boot:run
    ```
-3. API disponível em `http://localhost:8080/`.
+3. API disponível em `http://localhost:8081/`.
 
 ### Frontend
 
